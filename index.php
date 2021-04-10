@@ -1,6 +1,7 @@
 <?php
 
 require_once('hobby.model.php');
+require_once('upload.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $favoriteGames = @$_POST['favorite_games']; // array
     $email = @$_POST['email'];
     $phone = @$_POST['phone'];
-    $favoritePicture = @$_POST['favorite_picture'];
+    $favoritePicture = @$_FILES['favorite_picture'];
 
     if (
         !isset($firstName) || empty($firstName) ||
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         !isset($favoriteGames) || empty($favoriteGames) ||
         !isset($email) || empty($email) ||
         !isset($phone) || empty($phone) ||
-        !isset($favoritePicture) || empty($favoritePicture)
+        empty($favoritePicture)
     ) { // •	Empty values not allowed, 
         $errors[] = "All fields should be present.";
     }
@@ -45,29 +46,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (count($errors) == 0) {
-        // TODO: Upload picture
-        /*$upload = new Upload();
-        $upload->setUploadDir('images/upload/');
-        $msg = $upload->upload('name');
+        $upload = new Upload();
+        $upload->setUploadDir('images/');
+        $uploadErrors = $upload->upload('favorite_picture');
 
+        if ($uploadErrors == null || count($uploadErrors) == 0) {
+            $imagePath = $upload->getUploadDir().$upload->getFilepath();
 
-        $upload->getFilepath();
-        $upload->getUploadDir();
-        $upload->getFilepath();
-        $upload->getFileType();*/
-
-        $hobby = new Hobby(
-            $firstName,
-            $lastName,
-            $dob,
-            $gender,
-            $favoriteGames,
-            $email,
-            $phone,
-            $password,
-            $image
-        );
-        $hobby->add(); // insert to db
+            $hobby = new Hobby(
+                $firstName,
+                $lastName,
+                $dob,
+                $gender,
+                $favoriteGames,
+                $email,
+                $phone,
+                $password,
+                $imagePath
+            );
+            $hobby->add(); // insert to db
+        } else {
+            $errors = array_merge($errors, $uploadErrors);
+        }
     }
 }
 
@@ -100,7 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <table width="400px" cellpadding="10" cellspacing="0">
-        <form method="POST">
             <tr bgcolor="#de8704">
                 <td colspan="2">My Hobbies</td>
             </tr>
@@ -175,6 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
         </form>
     </table>
+		<form method="POST" enctype="multipart/form-data">
 </body>
 
 </html>
