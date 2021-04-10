@@ -33,10 +33,10 @@ class Database extends MySQLi
         return self::$instance;
     }
 
-    public function closeConnection()
+    public static function closeConnection()
     {
         if (self::$instance != null) {
-            parent::close();
+            self::$instance->close();
             self::$instance = null;
         }
     }

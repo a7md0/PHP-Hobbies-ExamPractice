@@ -86,3 +86,7 @@
 		</table>
 	</body>
 </html>
+
+<?php
+Database::closeConnection();
+?>
