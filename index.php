@@ -49,19 +49,19 @@
             </tr>
             <tr bgcolor="#222536">
                 <td align="right">Gender</td>
-                <td><input type="radio" name="gender" value="male">Male
-                    <input type="radio" name="gender" value="female">Female
+                <td><input type="radio" name="gender" value="male" required />Male
+                    <input type="radio" name="gender" value="female" required />Female
                 </td>
             </tr>
             <tr bgcolor="#222536">
                 <td align="right">Country</td>
                 <td>
-                    <select name="country">
-                        <option>Country</option>
-                        <option value="india">India</option>
-                        <option value="usa">USA</option>
-                        <option value="uk">UK</option>
-                        <option value="japan">Japan</option>
+                    <select name="country" required>
+                        <option value="">Country</option>
+                        <option>India</option>
+                        <option>USA</option>
+                        <option>UK</option>
+                        <option>Japan</option>
                     </select>
                 </td>
             </tr>
