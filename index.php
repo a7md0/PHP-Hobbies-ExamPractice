@@ -1,45 +1,48 @@
-
 <html>
-	<head>
-		<title>Exam Practice</title>
-		<style>
-			body{
-				color: #d2d636;
-			}
-			.submit{
-				background: #62af5e;
-				color: white;
-				padding: 10px 20px;
-				border: none;
-			}
-			.reset{
-				background: #d9544f;
-				color: white;
-				padding: 10px 20px;
-				border: none;
-			}
-		</style>
-	</head>
-	<body>
-		<table width="400px" cellpadding="10" cellspacing="0">
-            <tr bgcolor="#de8704">
-                <td colspan="2">My Hobbies</td>			
-            </tr>
-			<tr bgcolor="#222536" rowspan="5">
-				<td align="right">First Name</td>
-				<td><input type="text" placeholder="Enter First Name"></td>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Last Name</td>
-				<td><input type="text" placeholder="Enter Last Name"></td>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Password</td>
-				<td><input type="password"></td>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Date of Birth</td>
-				<td><select>
+
+<head>
+	<title>Exam Practice</title>
+	<style>
+		body {
+			color: #d2d636;
+		}
+
+		.submit {
+			background: #62af5e;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+		}
+
+		.reset {
+			background: #d9544f;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+		}
+	</style>
+</head>
+
+<body>
+	<table width="400px" cellpadding="10" cellspacing="0">
+		<tr bgcolor="#de8704">
+			<td colspan="2">My Hobbies</td>
+		</tr>
+		<tr bgcolor="#222536" rowspan="5">
+			<td align="right">First Name</td>
+			<td><input type="text" placeholder="Enter First Name"></td>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Last Name</td>
+			<td><input type="text" placeholder="Enter Last Name"></td>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Password</td>
+			<td><input type="password"></td>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Date of Birth</td>
+			<td><select>
 					<option>Date</option>
 					<option>1</option>
 					<option>2</option>
@@ -132,54 +135,57 @@
 					<option>2019</option>
 					<option>2020</option>
 				</select>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Gender</td>
-				<td><input type="radio" name="gender">Male
-				<input type="radio" name="gender">Female</td>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Country</td>
-				<td><select>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Gender</td>
+			<td><input type="radio" name="gender">Male
+				<input type="radio" name="gender">Female
+			</td>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Country</td>
+			<td><select>
 					<option>Country</option>
 					<option>India</option>
 					<option>USA</option>
 					<option>UK</option>
 					<option>Japan</option>
 				</select></td>
-			</tr>
-			<tr bgcolor="#222536"> 
-				<td  align="right">Select Game</td><td>
-					<input type="checkbox" />Hockey  <br />
-					<input type="checkbox" />Football<br />
-					<input type="checkbox" />Badminton<br />
-					<input type="checkbox" />Cricket<br />
-					<input type="checkbox" />volleyball
-				</td>
-			</tr>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Select Game</td>
+			<td>
+				<input type="checkbox" />Hockey <br />
+				<input type="checkbox" />Football<br />
+				<input type="checkbox" />Badminton<br />
+				<input type="checkbox" />Cricket<br />
+				<input type="checkbox" />volleyball
+			</td>
+		</tr>
 
-			<tr bgcolor="#222536">
-				<td align="right">E-mail</td>
-				<td><input type="text" placeholder="Enter E-mail"></td>
-			</tr>
-			<tr bgcolor="#222536">
-				<td align="right">Phone</td>
-				<td><input type="text" placeholder="Enter Phone"></td>
-			</tr>
-			
-			
-			<tr bgcolor="#222536">
-				<td> Favourite Picture </td>
-				<td>
+		<tr bgcolor="#222536">
+			<td align="right">E-mail</td>
+			<td><input type="text" placeholder="Enter E-mail"></td>
+		</tr>
+		<tr bgcolor="#222536">
+			<td align="right">Phone</td>
+			<td><input type="text" placeholder="Enter Phone"></td>
+		</tr>
+
+
+		<tr bgcolor="#222536">
+			<td> Favourite Picture </td>
+			<td>
 				<input type="file" />
 
-			</tr>
-			<tr bgcolor="#de8704">
-				<td colspan="2" align="right">
-					<input type="Submit" class="submit">
-					<input type="Reset" value="Cancel" class="reset">
-				</td>
-			</tr>
-		</table>
-	</body>
+		</tr>
+		<tr bgcolor="#de8704">
+			<td colspan="2" align="right">
+				<input type="Submit" class="submit">
+				<input type="Reset" value="Cancel" class="reset">
+			</td>
+		</tr>
+	</table>
+</body>
+
 </html>
