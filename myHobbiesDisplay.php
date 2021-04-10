@@ -1,3 +1,17 @@
+<?php
+	require_once('hobby.model.php');
+
+    if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+		exit("Invalid id provided".$_GET['id']);
+    }
+
+	$id = intval($_GET['id']);
+
+	$hobby = Hobby::findById($id);
+	if ($hobby == null) {
+		exit("Cannot find hobby with id $id");
+	}
+?>
 
 <html>
 	<head>
@@ -31,7 +45,7 @@
 			</tr>
 			<tr bgcolor="#222536" rowspan="5">
 				<td align="right">Name: </td>
-				<td>Abc Xyz</td>
+				<td><?=$hobby->getFirstName().$hobby->getLastName()?></td>
 			</tr>
 			
 			
@@ -39,29 +53,27 @@
 			
 			<tr bgcolor="#222536">
 				<td align="right">Country: </td>
-				<td>Bahrain</td>
+				<td>Bahrain</td> <!-- Somehow the country does not exist in the table schema or get saved at all -->
 			</tr>
 			<tr bgcolor="#222536"> 
 				<td  align="right">Your Favourite Game(s) are: </td>
-				<td colspan="2">
-					Hockey, Football, Badminton, volleyball
-				</td>
+				<td colspan="2"><?=$hobby->getGames()?></td>
 			</tr>
 
 			<tr bgcolor="#222536">
 				<td align="right">Your E-mail: </td>
-				<td>abc@gmail.com</td>
+				<td><?=$hobby->getEmail()?></td>
 			</tr>
 			<tr bgcolor="#222536">
 				<td align="right">Phone No: </td>
-				<td>12345678</td>
+				<td><?=$hobby->getPhone()?></td>
 			</tr>
 			
 			
 			<tr bgcolor="#222536">
 				<td> Favourite Picture </td>
 				<td>
-				<input type="image"  src="images/img.gif"  width="120" height="100">
+				<input type="image"  src="<?=$hobby->getImage()?>"  width="120" height="100">
 				
 				</td>
 
