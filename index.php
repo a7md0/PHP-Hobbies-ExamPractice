@@ -100,6 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <table width="400px" cellpadding="10" cellspacing="0">
+        <?php
+            if (count($errors) > 0) {
+                echo "<ul>";
+                foreach ($errors as $error) {
+                    echo "<li>".$error."</li>";
+                }
+                echo "<ul>";
+            }
+        ?>
         <form method="POST" enctype="multipart/form-data">
             <tr bgcolor="#de8704">
                 <td colspan="2">My Hobbies</td>
