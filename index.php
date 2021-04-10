@@ -24,168 +24,82 @@
 </head>
 
 <body>
-	<table width="400px" cellpadding="10" cellspacing="0">
-		<tr bgcolor="#de8704">
-			<td colspan="2">My Hobbies</td>
-		</tr>
-		<tr bgcolor="#222536" rowspan="5">
-			<td align="right">First Name</td>
-			<td><input type="text" placeholder="Enter First Name"></td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Last Name</td>
-			<td><input type="text" placeholder="Enter Last Name"></td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Password</td>
-			<td><input type="password"></td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Date of Birth</td>
-			<td><select>
-					<option>Date</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-					<option>11</option>
-					<option>12</option>
-					<option>13</option>
-					<option>14</option>
-					<option>15</option>
-					<option>16</option>
-					<option>17</option>
-					<option>18</option>
-					<option>19</option>
-					<option>20</option>
-					<option>21</option>
-					<option>22</option>
-					<option>23</option>
-					<option>24</option>
-					<option>25</option>
-					<option>26</option>
-					<option>27</option>
-					<option>28</option>
-					<option>29</option>
-					<option>30</option>
-					<option>31</option>
-				</select>
-				<select>
-					<option>Month</option>
-					<option>January</option>
-					<option>February</option>
-					<option>March</option>
-					<option>April</option>
-					<option>May</option>
-					<option>June</option>
-					<option>July</option>
-					<option>August</option>
-					<option>September</option>
-					<option>October</option>
-					<option>November</option>
-					<option>December</option>
-				</select>
-				<select>
-					<option>Year</option>
-					<option>1980</option>
-					<option>1981</option>
-					<option>1982</option>
-					<option>1983</option>
-					<option>1984</option>
-					<option>1985</option>
-					<option>1986</option>
-					<option>1987</option>
-					<option>1988</option>
-					<option>1989</option>
-					<option>1990</option>
-					<option>1991</option>
-					<option>1992</option>
-					<option>1993</option>
-					<option>1994</option>
-					<option>1995</option>
-					<option>1996</option>
-					<option>1997</option>
-					<option>1998</option>
-					<option>1999</option>
-					<option>2000</option>
-					<option>2001</option>
-					<option>2002</option>
-					<option>2003</option>
-					<option>2004</option>
-					<option>2005</option>
-					<option>2006</option>
-					<option>2007</option>
-					<option>2008</option>
-					<option>2009</option>
-					<option>2010</option>
-					<option>2011</option>
-					<option>2012</option>
-					<option>2013</option>
-					<option>2014</option>
-					<option>2015</option>
-					<option>2016</option>
-					<option>2017</option>
-					<option>2018</option>
-					<option>2019</option>
-					<option>2020</option>
-				</select>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Gender</td>
-			<td><input type="radio" name="gender">Male
-				<input type="radio" name="gender">Female
-			</td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Country</td>
-			<td><select>
-					<option>Country</option>
-					<option>India</option>
-					<option>USA</option>
-					<option>UK</option>
-					<option>Japan</option>
-				</select></td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Select Game</td>
-			<td>
-				<input type="checkbox" />Hockey <br />
-				<input type="checkbox" />Football<br />
-				<input type="checkbox" />Badminton<br />
-				<input type="checkbox" />Cricket<br />
-				<input type="checkbox" />volleyball
-			</td>
-		</tr>
+    <table width="400px" cellpadding="10" cellspacing="0">
+        <form method="POST">
+            <tr bgcolor="#de8704">
+                <td colspan="2">My Hobbies</td>
+            </tr>
+            <tr bgcolor="#222536" rowspan="5">
+                <td align="right">First Name</td>
+                <td><input type="text" placeholder="Enter First Name" name="first_name" required /></td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Last Name</td>
+                <td><input type="text" placeholder="Enter Last Name" name="last_name" required /></td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Password</td>
+                <td><input type="password" name="password" required /></td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Date of Birth</td>
+                <td>
+                    <input type="date" id="start" name="date_of_birth" required />
+                </td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Gender</td>
+                <td><input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">Female
+                </td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Country</td>
+                <td>
+                    <select name="country">
+                        <option>Country</option>
+                        <option value="india">India</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                        <option value="japan">Japan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Select Game</td>
+                <td>
+                    <input type="checkbox" name="favorite_games[]" value="hockey" />Hockey <br />
+                    <input type="checkbox" name="favorite_games[]" value="football" />Football<br />
+                    <input type="checkbox" name="favorite_games[]" value="badminton" />Badminton<br />
+                    <input type="checkbox" name="favorite_games[]" value="cricket" />Cricket<br />
+                    <input type="checkbox" name="favorite_games[]" value="volleyball" />volleyball
+                </td>
+            </tr>
 
-		<tr bgcolor="#222536">
-			<td align="right">E-mail</td>
-			<td><input type="text" placeholder="Enter E-mail"></td>
-		</tr>
-		<tr bgcolor="#222536">
-			<td align="right">Phone</td>
-			<td><input type="text" placeholder="Enter Phone"></td>
-		</tr>
+            <tr bgcolor="#222536">
+                <td align="right">E-mail</td>
+                <td><input type="email" placeholder="Enter E-mail" name="email" required /></td>
+            </tr>
+            <tr bgcolor="#222536">
+                <td align="right">Phone</td>
+                <td><input type="number" placeholder="Enter Phone" name="phone" required /></td>
+            </tr>
 
 
-		<tr bgcolor="#222536">
-			<td> Favourite Picture </td>
-			<td>
-				<input type="file" />
+            <tr bgcolor="#222536">
+                <td> Favourite Picture </td>
+                <td>
+                    <input type="file" name="favorite_picture" required />
 
-		</tr>
-		<tr bgcolor="#de8704">
-			<td colspan="2" align="right">
-				<input type="Submit" class="submit">
-				<input type="Reset" value="Cancel" class="reset">
-			</td>
-		</tr>
-	</table>
+            </tr>
+            <tr bgcolor="#de8704">
+                <td colspan="2" align="right">
+                    <input type="submit" class="submit">
+                    <input type="reset" value="Cancel" class="reset">
+                </td>
+            </tr>
+        </form>
+    </table>
 </body>
 
 </html>
