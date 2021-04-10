@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $imagePath = $upload->getUploadDir() . $upload->getFilepath();
 
             $hobby = new Hobby(
+                null,
                 $firstName,
                 $lastName,
                 $dob,
@@ -172,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
             <tr bgcolor="#222536">
                 <td align="right">Phone</td>
-                <td><input type="number" placeholder="Enter Phone" name="phone" required /></td>
+                <td><input type="text" placeholder="Enter Phone" name="phone" required /></td>
             </tr>
 
 
