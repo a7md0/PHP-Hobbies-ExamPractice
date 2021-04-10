@@ -259,6 +259,12 @@ class Hobby
         return false;
     }
 
+    /**
+     * Fetch hobby by id
+     *
+     * @param int $id
+     * @return self|null
+     */
     public static function findById($id) {
         $db = Database::getInstance();
         $result = $db->query("SELECT * FROM `myhobby` WHERE `idHobby` = $id;");
