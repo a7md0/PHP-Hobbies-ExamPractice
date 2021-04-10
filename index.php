@@ -3,9 +3,9 @@
 require_once('hobby.model.php');
 require_once('upload.class.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = array();
+$errors = array();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Inputs
     $firstName = @$_POST['first_name'];
     $lastName = @$_POST['last_name'];
@@ -64,7 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $password,
                 $imagePath
             );
-            $hobby->add(); // insert to db
+            $wasAdded = $hobby->add(); // insert to db
+
+            if ($wasAdded) {
+                $hobbyId = $hobby->getId();
+
+                header("Location: myHobbiesDisplay.php?id=$hobbyId");
+            }
         } else {
             $errors = array_merge($errors, $uploadErrors);
         }

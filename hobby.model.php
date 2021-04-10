@@ -4,6 +4,7 @@ require_once('database.class.php');
 
 class Hobby
 {
+    private $id;
     private $firstName;
     private $lastName;
     private $dob;
@@ -15,6 +16,7 @@ class Hobby
     private $image;
 
     public function __construct(
+        $id = null,
         $firstName = null,
         $lastName = null,
         $dob = null,
@@ -25,6 +27,7 @@ class Hobby
         $password = null,
         $image = null
     ) {
+        $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->dob = $dob;
@@ -34,6 +37,27 @@ class Hobby
         $this->phone = $phone;
         $this->password = $password;
         $this->image = $image;
+    }
+
+    
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -226,8 +250,13 @@ class Hobby
 
         $db = Database::getInstance();
         $db->query("INSERT INTO `myhobby` (`FName`, `LName`, `DOB`, `Gender`, `Game`, `Email`, `Phone`, `Password`, `ImgFile`) VALUES ('$this->firstName', '$this->lastName', '$this->dob', '$this->gender', '$games', '$this->email', '$this->phone', '$this->password', '$this->image');");
-        
-        return $db->affected_rows > 0;
+        if ($db->affected_rows > 0) {
+            $this->id = $db->insert_id;
+
+            return true;
+        }
+
+        return false;
     }
 
     public static function findById($id) {
@@ -240,6 +269,7 @@ class Hobby
         $row = $result->fetch_assoc();
 
         return new self(
+            $row['idHobby'],
             $row['FName'],
             $row['LName'],
             $row['DOB'],
