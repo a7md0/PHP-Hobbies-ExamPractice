@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $uploadErrors = $upload->upload('favorite_picture');
 
         if ($uploadErrors == null || count($uploadErrors) == 0) {
-            $imagePath = $upload->getUploadDir().$upload->getFilepath();
+            $imagePath = $upload->getUploadDir() . $upload->getFilepath();
 
             $hobby = new Hobby(
                 $firstName,
@@ -76,30 +76,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-	<title>Exam Practice</title>
-	<style>
-		body {
-			color: #d2d636;
-		}
+    <title>Exam Practice</title>
+    <style>
+        body {
+            color: #d2d636;
+        }
 
-		.submit {
-			background: #62af5e;
-			color: white;
-			padding: 10px 20px;
-			border: none;
-		}
+        .submit {
+            background: #62af5e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+        }
 
-		.reset {
-			background: #d9544f;
-			color: white;
-			padding: 10px 20px;
-			border: none;
-		}
-	</style>
+        .reset {
+            background: #d9544f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
     <table width="400px" cellpadding="10" cellspacing="0">
+        <form method="POST" enctype="multipart/form-data">
             <tr bgcolor="#de8704">
                 <td colspan="2">My Hobbies</td>
             </tr>
@@ -174,7 +175,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
         </form>
     </table>
-		<form method="POST" enctype="multipart/form-data">
 </body>
 
 </html>
