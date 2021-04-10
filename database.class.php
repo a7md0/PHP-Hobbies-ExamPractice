@@ -22,6 +22,12 @@ class Database extends MySQLi
     {
         if (self::$instance == null) {
             self::$instance = new self("localhost", "u201700099", "u201700099", "db201700099");
+            
+            if (self::$instance->connect_errno) {
+
+                printf("connection failed: %s\n", self::$instance->connect_error);
+                exit();
+            }
         }
 
         return self::$instance;
