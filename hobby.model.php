@@ -229,4 +229,26 @@ class Hobby
         
         return $db->affected_rows > 0;
     }
+
+    public static function findById($id) {
+        $db = Database::getInstance();
+        $result = $db->query("SELECT * FROM `myhobby` WHERE `idHobby` = $id;");
+        if ($result->num_rows == 0) {
+            return null;
+        }
+
+        $row = $result->fetch_assoc();
+
+        return new self(
+            $row['FName'],
+            $row['LName'],
+            $row['DOB'],
+            $row['Gender'],
+            $row['Game'],
+            $row['Email'],
+            $row['Phone'],
+            $row['Password'],
+            $row['ImgFile']
+        );
+    }
 }
