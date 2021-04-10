@@ -215,4 +215,18 @@ class Hobby
 
         return $this;
     }
+
+    /**
+     * Add new hobby
+     *
+     * @return bool
+     */
+    public function add() {
+        $games = join(", ", $this->games); // Join array of string to comma separated list
+
+        $db = Database::getInstance();
+        $db->query("INSERT INTO `myhobby` (`FName`, `LName`, `DOB`, `Gender`, `Game`, `Email`, `Phone`, `Password`, `ImgFile`) VALUES ('$this->firstName', '$this->lastName', '$this->dob', '$this->gender', '$games', '$this->email', '$this->phone', '$this->password', '$this->image');");
+        
+        return $db->affected_rows > 0;
+    }
 }

@@ -1,3 +1,78 @@
+<?php
+
+require_once('hobby.model.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $errors = array();
+
+    // Inputs
+    $firstName = @$_POST['first_name'];
+    $lastName = @$_POST['last_name'];
+    $password = @$_POST['password'];
+    $dob = @$_POST['date_of_birth'];
+    $gender = @$_POST['gender'];
+    $country = @$_POST['country'];
+    $favoriteGames = @$_POST['favorite_games']; // array
+    $email = @$_POST['email'];
+    $phone = @$_POST['phone'];
+    $favoritePicture = @$_POST['favorite_picture'];
+
+    if (
+        !isset($firstName) || empty($firstName) ||
+        !isset($lastName) || empty($lastName) ||
+        !isset($password) || empty($password) ||
+        !isset($dob) || empty($dob) ||
+        !isset($gender) || empty($gender) ||
+        !isset($country) || empty($country) ||
+        !isset($favoriteGames) || empty($favoriteGames) ||
+        !isset($email) || empty($email) ||
+        !isset($phone) || empty($phone) ||
+        !isset($favoritePicture) || empty($favoritePicture)
+    ) { // •	Empty values not allowed, 
+        $errors[] = "All fields should be present.";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // •	Correct format for Email. 
+        $errors[] = "Invalid email address";
+    }
+
+    if (!is_numeric($phone)) { // •	Only Numeric for Phone Number, 
+        $errors[] = "Only Numeric for Phone Number";
+    }
+
+    if (!is_array($favoriteGames) || count($favoriteGames) < 1) { // •	At least 1 selection for Game, 
+        $errors[] = "You have to select at least one game";
+    }
+
+    if (count($errors) == 0) {
+        // TODO: Upload picture
+        /*$upload = new Upload();
+        $upload->setUploadDir('images/upload/');
+        $msg = $upload->upload('name');
+
+
+        $upload->getFilepath();
+        $upload->getUploadDir();
+        $upload->getFilepath();
+        $upload->getFileType();*/
+
+        $hobby = new Hobby(
+            $firstName,
+            $lastName,
+            $dob,
+            $gender,
+            $favoriteGames,
+            $email,
+            $phone,
+            $password,
+            $image
+        );
+        $hobby->add(); // insert to db
+    }
+}
+
+?>
+
 <html>
 
 <head>
@@ -103,3 +178,7 @@
 </body>
 
 </html>
+
+<?php
+Database::getInstance()->closeConnection();
+?>
