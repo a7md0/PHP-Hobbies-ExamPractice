@@ -140,8 +140,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
             <tr bgcolor="#222536">
                 <td align="right">Gender</td>
-                <td><input type="radio" name="gender" value="male" required />Male
-                    <input type="radio" name="gender" value="female" required />Female
+                <td><input type="radio" name="gender" value="m" required />Male
+                    <input type="radio" name="gender" value="f" required />Female
                 </td>
             </tr>
             <tr bgcolor="#222536">
