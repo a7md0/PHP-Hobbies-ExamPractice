@@ -256,6 +256,8 @@ class Hobby
             return true;
         }
 
+        echo $db->error;
+
         return false;
     }
 
