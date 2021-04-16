@@ -45,7 +45,7 @@
 			</tr>
 			<tr bgcolor="#222536" rowspan="5">
 				<td align="right">Name: </td>
-				<td><?=$hobby->getFirstName().$hobby->getLastName()?></td>
+				<td><?=$hobby->getFirstName().' '.$hobby->getLastName()?></td>
 			</tr>
 			
 			
