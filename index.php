@@ -46,12 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (count($errors) == 0) {
-        $upload = new Upload();
-        $upload->setUploadDir('images/');
-        $uploadErrors = $upload->upload('favorite_picture');
-
-        if ($uploadErrors == null || count($uploadErrors) == 0) {
-            $imagePath = $upload->getUploadDir() . $upload->getFilepath();
+        try {
+            $upload = new Upload('images/');
+            $file = $upload->upload($favoritePicture);
 
             $hobby = new Hobby(
                 null,
@@ -63,17 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $email,
                 $phone,
                 $password,
-                $imagePath
+                $file->getPath()
             );
             $wasAdded = $hobby->add(); // insert to db
 
             if ($wasAdded) {
                 $hobbyId = $hobby->getId();
 
-                header("Location: myHobbiesDisplay.php?id=$hobbyId");
+                // header("Location: myHobbiesDisplay.php?id=$hobbyId");
             }
-        } else {
-            $errors = array_merge($errors, $uploadErrors);
+        } catch (Exception $ex) {
+            $errors[] = $ex->getMessage();
         }
     }
 }
