@@ -62,12 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $password,
                 $file->getPath()
             );
-            $wasAdded = $hobby->add(); // insert to db
 
-            if ($wasAdded) {
+            if ($hobby->add()) {
                 $hobbyId = $hobby->getId();
 
-                // header("Location: myHobbiesDisplay.php?id=$hobbyId");
+                header("Location: myHobbiesDisplay.php?id=$hobbyId");
             }
         } catch (Exception $ex) {
             $errors[] = $ex->getMessage();
