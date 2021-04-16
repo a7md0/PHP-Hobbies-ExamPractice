@@ -3,28 +3,28 @@
 class Upload
 {
     /**
-     * Undocumented variable
+     * Upload directory.
      *
      * @var string
      */
     private $upload_dir;
 
     /**
-     * Undocumented variable
+     * Max file upload size.
      *
      * @var int
      */
     private $max_file_size;
 
     /**
-     * Undocumented variable
+     * List of allowed file extensions.
      *
      * @var array
      */
     private $allowed_extensions;
 
     /**
-     * Undocumented variable
+     * List of denied mime types.
      *
      * @var array
      */
@@ -63,7 +63,7 @@ class Upload
         return $this->upload_dir;
     }
 
-    public function generateFileName(array $file)
+    private function generateFileName(array $file)
     {
         if ($this->hashedNames) {
             $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -84,7 +84,7 @@ class Upload
     }
 
     /**
-     * Undocumented function
+     * Upload file.
      *
      * @param array $file
      * 
@@ -108,9 +108,9 @@ class Upload
         } elseif ($file['size'] >= $this->max_file_size) {
             throw new RuntimeException($file['name'] . ' exceeds the MAX_FILE_SIZE');
         } elseif (!in_array($fileExtension, $this->allowed_extensions)) {
-            throw new RuntimeException($file['name'] . ' is not an allowed extension');
+            throw new RuntimeException(".$fileExtension is not an allowed extension");
         } elseif (in_array($file['type'], $this->denied_mime_types)) {
-            throw new RuntimeException($file['name'] . ' is a denied type');
+            throw new RuntimeException($file['type'] . ' is a denied type');
         }
 
         if (!move_uploaded_file($file['tmp_name'], $finalFilePath)) {
